@@ -52,6 +52,19 @@ class Random:
             ran2 = self.rand()
             #print (Inti)
         return int(Inti)
+
+    def exponintial(self,beta =0.5):
+        if beta <=0.:
+            beta = 1.
+        temp = -100.
+        while temp<-40 or temp>100:
+            R = self.rand()
+            while R<=0:
+                R = self.rand()
+            temp = -math.log(R)/beta
+        return temp
+
+
     def parabolic_dist(self,temp=30.):
         room_temp = 30
         low_temp = -40.0
@@ -73,6 +86,7 @@ class Random:
         X= np.sqrt(Myrand/change_temp)
         #print (X)
         return X
+
     def linear_dist(self,temp=30.):
         room_temp = 30
         low_temp = -40.0

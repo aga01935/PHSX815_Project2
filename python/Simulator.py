@@ -18,7 +18,7 @@ if __name__ == "__main__":
         print ("-Nmes <number>         number of measurements to make, default is 1")
         print ("-Nexp <number>         number of experiment to perform, default is 1")
         print ("-output <string>       name of output file to produce, default is 1")
-        print ("-temp <number>         outside temperature , default is 30 celsious")
+        #print ("-temp <number>         outside temperature , default is 30 celsious")
         print
         sys.exit(1)
 
@@ -58,10 +58,10 @@ if __name__ == "__main__":
         Ne = int(sys.argv[p+1])
         if Ne > 0:
             Nexp = Ne
-    if '-temp' in sys.argv:
-        p = sys.argv.index('-temp')
-        tp = float(sys.argv[p+1])
-        temp = tp
+    #if '-temp' in sys.argv:
+    #    p = sys.argv.index('-temp')
+    #    tp = float(sys.argv[p+1])
+    #    temp = tp
     if '-output' in sys.argv:
         p = sys.argv.index('-output')
         OutputFileName = sys.argv[p+1]
@@ -72,17 +72,19 @@ if __name__ == "__main__":
     if doOutputFile:
         outfile = open(OutputFileName, 'w')
         outfile.write(cause)
-        outfile.write(str(temp))
+        #outfile.write(str(temp))
         outfile.write(str(seed)+" \n")
 
         if (cause=="ED"):
             for e in range(0,Nexp):
                 for t in range(0,Nmeas):
+                    temp = random.exponintial(0.6)
                     outfile.write(str(random.linear_dist(temp))+" ")
                 outfile.write(" \n")
         if (cause=="HF"):
             for e in range(0,Nexp):
                 for t in range(0,Nmeas):
+                    temp = random.exponintial(0.6)
                     outfile.write(str(random.parabolic_dist(temp))+" ")
                 outfile.write(" \n")
         outfile.close()
